@@ -31,15 +31,11 @@ public class Negocio {
 	
 	// CONVERSOR
 	public static double conversor(String unidade, double quantidade) {
-        switch (unidade) {
-            case "kbyte":
-                return quantidade / ( 1024 * 1024 );
-            case "mbyte":
-                return quantidade / 1024;
-            case "gbyte":
-                return quantidade;
-            default:
-                return 0;
-        }
+        return switch (unidade) {
+            case "kbyte" -> quantidade / (1024 * 1024);
+            case "mbyte" -> quantidade / 1024;
+            case "gbyte" -> quantidade;
+            default -> 0;
+        };
 	}
 }

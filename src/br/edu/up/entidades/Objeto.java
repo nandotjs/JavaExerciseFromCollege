@@ -6,7 +6,6 @@ public class Objeto {
 	private double cTotal;
 	private double cOcupada;
     private double cDisponivel;
-    private boolean temDados;
     
     // CONSTRUTOR PADRÃO
     public Objeto() {
@@ -39,12 +38,6 @@ public class Objeto {
 	}
 	public void setcDisponivel(double cDisponivel) {
 		this.cDisponivel = cDisponivel;
-	}
-	public boolean isTemDados() {
-		return temDados;
-	}
-	public void setTemDados(boolean temDados) {
-		this.temDados = temDados;
 	}
 
 }

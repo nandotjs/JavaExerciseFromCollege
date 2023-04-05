@@ -8,7 +8,7 @@ import br.edu.up.entidades.*;
 public class Persistencia {
 
 	// ARRAY
-	public static List<Objeto> listaObjetos = new ArrayList<Objeto>();
+	public static List<Objeto> listaObjetos = new ArrayList<>();
 
 	
 	
