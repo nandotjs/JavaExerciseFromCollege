@@ -11,9 +11,8 @@ public class Negocio {
             objeto.setcOcupada(objeto.getcOcupada() + valor);
             objeto.setcDisponivel(objeto.getcTotal() - objeto.getcOcupada());
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 	
 	// EXCLUIR DADOS //
@@ -23,9 +22,8 @@ public class Negocio {
             objeto.setcOcupada(objeto.getcOcupada() - valor);
             objeto.setcDisponivel(objeto.getcTotal() - objeto.getcOcupada());
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 	
 	

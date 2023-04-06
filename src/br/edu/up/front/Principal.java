@@ -4,10 +4,15 @@ import br.edu.up.persistencia.*;
 import br.edu.up.entidades.*;
 import br.edu.up.negocio.*;
 
+import java.text.DecimalFormat;
+// import java.util.Scanner;
+
 
 public class Principal {
 	public static void main(String[] args) {
-
+		// Scanner só para eu lembrar que existe. Ele faz eu escrever as coisas em 2 linhas, não gostei.
+		// Scanner scanner = new Scanner(System.in);
+		DecimalFormat df = new DecimalFormat("#.##");
 		int opt;
 		Objeto objeto = null;
 
@@ -24,7 +29,7 @@ public class Principal {
 						objeto.setcTotal(Console.readDouble("Informe a quantidade de GB disponíveis: "));
 						Persistencia.incluirObjeto(objeto);
 						System.out.println("Objeto incluido.");
-						System.out.println(objeto.getTipo() + " com " + objeto.getcTotal() + " GB de armazenamento.");
+						System.out.println(objeto.getTipo() + " com " + df.format(objeto.getcTotal()) + " GB de armazenamento.");
 					} else {
 						System.out.println("Objeto já cadastrado.");
 					}
@@ -44,10 +49,10 @@ public class Principal {
 								System.out.printf("""
 													Dados gravados com sucesso!
 													Tipo: %s
-													Total: %d GB
-													Disponivel: %d GB
-													Ocupado: %d GB
-													%n""", objeto.getTipo(), (int)objeto.getcTotal(), (int)objeto.getcDisponivel(), (int)objeto.getcOcupada());
+													Total: %s GB
+													Disponivel: %s GB
+													Ocupado: %s GB
+													%n""", objeto.getTipo(), df.format(objeto.getcTotal()), df.format(objeto.getcDisponivel()), df.format(objeto.getcOcupada()));
 
 							} else {
 								System.out.println("Não foi possível gravar os dados. Armazenamento insuficiente.");
@@ -65,8 +70,8 @@ public class Principal {
 					objeto = Persistencia.buscarObjeto(objeto);
 					if (objeto != null) {
 						String unidade = Console.readString("Digite a unidade de medida (kbyte, mbyte, gbyte): ");
-						double quantidade = Console.readDouble("Espaço ocupado: " + objeto.getcOcupada() +
-								"GB. Digite a quantidade de informação a ser EXCLUIDA: ");
+						double quantidade = Console.readDouble("Espaço ocupado: " + df.format(objeto.getcOcupada()) +
+								" GB. Digite a quantidade de informação a ser EXCLUIDA: ");
 						if (Negocio.conversor(unidade, quantidade) == 0) {
 							System.out.println("Unidade inválida: " + unidade + ".");
 						} else {
@@ -74,16 +79,10 @@ public class Principal {
 								System.out.printf("""
 													Dados excluidos com sucesso!
 													Tipo: %s
-													Total: %d GB
-													Disponivel: %d GB
-													Ocupado: %d GB
-													%n""", objeto.getTipo(), (int)objeto.getcTotal(), (int)objeto.getcDisponivel(), (int)objeto.getcOcupada());
-
-								System.out.println("Dados excluidos com sucesso!");
-								System.out.println(objeto.getTipo());
-								System.out.println("Total: " + objeto.getcTotal());
-								System.out.println("Disponivel: " + objeto.getcDisponivel());
-								System.out.println("Ocupado: " + objeto.getcOcupada());
+													Total: %s GB
+													Disponivel: %s GB
+													Ocupado: %s GB
+													%n""", objeto.getTipo(), df.format(objeto.getcTotal()), df.format(objeto.getcDisponivel()), df.format(objeto.getcOcupada()));
 							} else {
 								System.out.println("Não foi possível excluir os dados." +
 										" Você esta tentando excluir mais dados do que tem armazenado.");
@@ -109,10 +108,10 @@ public class Principal {
 							if (objeto != null) {
 								System.out.printf("""
 												Tipo: %s
-												Total: %d GB
-												Disponivel: %d GB
-												Ocupado: %d GB
-												%n""", objeto.getTipo(), (int)objeto.getcTotal(), (int)objeto.getcDisponivel(), (int)objeto.getcOcupada());
+												Total: %s GB
+												Disponivel: %s GB
+												Ocupado: %s GB
+												%n""", objeto.getTipo(), df.format(objeto.getcTotal()), df.format(objeto.getcDisponivel()), df.format(objeto.getcOcupada()));
 
 							} else {
 								System.out.println("Objeto não encontrado.");
